@@ -34,6 +34,9 @@ def get_neighbors(string):
 source = 'start'
 destination = 'end'
 
+def heuristic(string):
+	return abs(len(string) - len(destination))
+
 solution = None
 worklist = PriorityQueue()
 worklist.put([source])
