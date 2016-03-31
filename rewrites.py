@@ -25,7 +25,11 @@ def positions_in(substring, string):
 		result.append(index)
 
 def get_neighbors(string):
-	return {'end'}
+	from_first_move = {'end'}
+	from_second_move = {'end'}
+	from_third_move = {'end'}
+	from_fourth_move = {'end'}
+	return from_first_move | from_second_move | from_third_move | from_fourth_move
 
 source = 'start'
 destination = 'end'
