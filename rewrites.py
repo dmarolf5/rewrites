@@ -24,12 +24,20 @@ def positions_in(substring, string):
 			return result
 		result.append(index)
 
-def get_neighbors(string):
-	from_first_move = {'end'}
-	from_second_move = {'end'}
-	from_third_move = {'end'}
-	from_fourth_move = {'end'}
-	return from_first_move | from_second_move | from_third_move | from_fourth_move
+def get_neighbors_via_first_move(string):
+	return {string[:position] + 'end' + string[position + len('start'):] for position in positions_in('start', string)}
+
+def get_neighbors_via_second_move(string):
+	return {string[:position] + 'end' + string[position + len('start'):] for position in positions_in('start', string)}
+
+def get_neighbors_via_third_move(string):
+	return {string[:position] + 'end' + string[position + len('start'):] for position in positions_in('start', string)}
+
+def get_neighbors_via_fourth_move(string):
+	return {string[:position] + 'end' + string[position + len('start'):] for position in positions_in('start', string)}
+
+def get_all_neighbors(string):
+	return get_neighbors_via_first_move(string) | get_neighbors_via_second_move(string) | get_neighbors_via_third_move(string) | get_neighbors_via_fourth_move(string)
 
 source = 'start'
 destination = 'end'
@@ -46,7 +54,7 @@ while not worklist.empty():
 	end = path[-1]
 	if end not in closed:
 		closed |= {end}
-		for extension in get_neighbors(end):
+		for extension in get_all_neighbors(end):
 			worklist.put(path + [extension])
 	if end == destination:
 		solution = path
