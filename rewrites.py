@@ -18,7 +18,7 @@ def positions_in(substring, string):
 	"""
 	result = []
 	index = -1
-	while True:			# A string of numbers we don't care about (conflict).		# A loop which adds different index values to the list named 'result'.
+	while True:					# A loop which adds different index values to the list named 'result'.
 		index = string.find(substring, index + 1)
 		if index == -1:
 			return result
