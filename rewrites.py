@@ -46,7 +46,7 @@ def heuristic(string):
 	return abs(len(string) - len(destination))
 
 solution = None
-worklist = PriorityQueue()
+worklist = PriorityQueue()		# A worklist algorithm used to find the solution to the initial problem.
 worklist.put([source])
 closed = set()
 while not worklist.empty():
